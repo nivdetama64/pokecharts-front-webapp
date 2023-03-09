@@ -1,0 +1,10 @@
+.appBar{
+    height: 45px;
+    background-color: #bc0e4c !important;
+    padding-top: 7px;
+}
+
+.toolBar{
+    height: 30px;
+    min-height: 0px!important;
+}

@@ -1,0 +1,57 @@
+.card {
+    border: 1px solid rgb(139, 139, 139);
+    border-radius: 5px;
+    padding: 10px;
+    background: antiquewhite;
+}
+
+.nameTitle{
+    font-size: small;
+    font-weight: bold;
+}
+
+.numberTitle{
+    float: right;
+}
+
+.bottomForm{
+    font-size: xx-small;
+}
+
+.bottomCP{
+    float: right;
+}
+
+.elementDiv {
+    text-align: center;
+}
+
+.cardMainSection {
+    text-align: center;
+}
+
+.elementImg{
+    max-width: 45%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.elementImgWide{
+    max-height: 16px;
+}
+
+.statDiv{
+    display: flex;
+}
+
+.statUL {
+    padding: 0;
+    text-align: left;
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.statLi{
+    font-family: monospace;
+    font-size: smaller;
+}

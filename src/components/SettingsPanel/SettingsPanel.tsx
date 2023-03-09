@@ -1,13 +1,5 @@
 import React from 'react';
-import './App.css';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import PokemonList from './components/PokemonList/PokemonList';
-import {PokemonService} from './Utils/PokemonService';
-import { FormInfo } from './Models/Form';
-
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -18,55 +10,26 @@ import MailIcon from '@mui/icons-material/Mail';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 
-export interface PokechartState {
-  bottomNavigationValue: number;
-  currentPokemons: FormInfo[];
-  currentForm: string;
-  leftPanelOpen: boolean;
+export interface PokechartProps {
+  isOpen: boolean;
+  onChange: any;
 }
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default class Pokechart extends React.Component<{}, PokechartState> {  
-  constructor(props: {}) {
+export default class SettingsPanel extends React.Component<PokechartProps, {}> {  
+  constructor(props: PokechartProps) {
     super(props);
-    this.state = {
-      bottomNavigationValue: 2,
-      currentPokemons: PokemonService.getPokemons([], "Id", "Asc", []),
-      currentForm: "normal",
-      leftPanelOpen: false
-    }
   }
-
-  
-
-
   public render(): React.ReactElement<{}> {
     const s = this.state;
-    const handleChangeBottomNav = (event: any, value: any):void => {
-      if (event) 
-        this.setState({bottomNavigationValue: value})
-    };
-    const toggleDrawer =
-(open: boolean) =>
-(event: React.KeyboardEvent | React.MouseEvent) => {
-  if (
-    event.type === 'keydown' &&
-    ((event as React.KeyboardEvent).key === 'Tab' ||
-      (event as React.KeyboardEvent).key === 'Shift')
-  ) {
-    return;
-  }
-
-  this.setState({leftPanelOpen: open});
-};
 
     const list = (anchor: Anchor) => (
       <Box
         sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
         role="presentation"
-        onClick={toggleDrawer(false)}
-        onKeyDown={toggleDrawer(false)}
+        onClick={this.props.onChange(false)}
+        onKeyDown={this.props.onChange(false)}
       >
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -97,24 +60,15 @@ export default class Pokechart extends React.Component<{}, PokechartState> {
     );
     const anchor = "top"
     return (
-      <div className="App">
-        <Header/>
-        
-        <Button onClick={toggleDrawer(true)}>{anchor}</Button>
         <React.Fragment>
           <Drawer
             anchor={anchor}
-            open={this.state.leftPanelOpen}
-            onClose={toggleDrawer(false)}
+            open={this.props.isOpen}
+            onClose={this.props.onChange(false)}
           >
             {list(anchor)}
           </Drawer>
         </React.Fragment>
-        <div className='mainContainer'>
-          <PokemonList Pokemons={s.currentPokemons} Form={s.currentForm}/>
-        </div>
-        <Footer selectedNav={s.bottomNavigationValue} onChangeNav={handleChangeBottomNav}/>
-      </div>
     );
   }
 }
