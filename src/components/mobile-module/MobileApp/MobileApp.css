@@ -1,0 +1,4 @@
+.MuiBottomNavigationAction-root.Mui-selected {
+    color: black !important;
+    font-weight: bold;
+}

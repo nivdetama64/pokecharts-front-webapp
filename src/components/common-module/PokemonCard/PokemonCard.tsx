@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './PokemonCard.css';
-import { FormInfo } from '../../Models/Form';
+import { FormInfo } from '../../../Models/Form';
 
 interface Props {
   Model: FormInfo,

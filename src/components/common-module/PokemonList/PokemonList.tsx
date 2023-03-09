@@ -1,6 +1,6 @@
 import React from 'react';
 import './PokemonList.css';
-import { FormInfo } from '../../Models/Form';
+import { FormInfo } from '../../../Models/Form';
 import PokemonsCard from '../PokemonCard/PokemonCard';
 import Grid from '@mui/material/Grid';
 

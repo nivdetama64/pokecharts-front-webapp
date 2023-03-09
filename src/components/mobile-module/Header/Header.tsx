@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, SearchIconWrapper, StyledInputBase } from '../../Utils/styled';
+import { Search, SearchIconWrapper, StyledInputBase } from '../../../Utils/styled';
 import './Header.css';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
