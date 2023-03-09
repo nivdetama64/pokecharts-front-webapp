@@ -1,0 +1,15 @@
+export interface Evolution{
+    PokemonId: number,
+    PokemonName: string | null,
+    Form: string | null,
+    CandyRequired: number,
+    GenderRequired: string | null,
+    OnlyEvolvesInDaytime: boolean,
+    OnlyEvolvesInNighttime: boolean,
+    LureRequired: string | null,
+    NoCandyCostIfTraded: boolean,
+    ItemRequired: string | null,
+    UpsideDown: boolean,
+    BuddyDistanceRequired: number,
+    MustBeBuddyToEvolve: boolean,
+}

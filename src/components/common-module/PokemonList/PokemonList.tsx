@@ -1,11 +1,11 @@
 import React from 'react';
 import './PokemonList.css';
-import { FormInfo } from '../../../Models/Form';
+import { Form } from '../../../Models/pokemons-models/FormFirst/Form';
 import PokemonsCard from '../PokemonCard/PokemonCard';
 import Grid from '@mui/material/Grid';
 
 export interface PokemonListProps {
-  Pokemons: FormInfo[],
+  Pokemons: Form[],
   Form: string,
 }
 

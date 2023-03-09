@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './PokemonCard.css';
-import { FormInfo } from '../../../Models/Form';
+import {Form} from '../../../Models/pokemons-models/FormFirst/Form'
 
 interface Props {
-  Model: FormInfo,
+  Model: Form,
   displayMode: number,
   selectedForm: string,
 }

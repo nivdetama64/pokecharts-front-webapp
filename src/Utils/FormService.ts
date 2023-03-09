@@ -1,27 +1,27 @@
 import { CONSTS } from '../Data/consts';
 import { FORMS } from '../Data/forms'; 
-import { Filter } from '../Models/Filter';
-import { FormInfo } from '../Models/Form';
+import { Filter } from '../Models/filters-models/Filter';
+import { Form } from '../Models/pokemons-models/FormFirst/Form';
 
-export const PokemonService = {
+export const FormService = {
 
-    getPokemons(
+    getForms(
       ids: string[] | null,
       orderBy: string | null, 
       orderDir: string | null,
       filters: Filter[]
-      ): FormInfo[]{
-        let result = ids !== null ? this.idsFilter(ids) :  FORMS as FormInfo[];
+      ): Form[]{
+        let result = ids !== null ? this.idsFilter(ids) :  FORMS as Form[];
         console.log(result)
         result = result.filter(d => CONSTS.availableForms.indexOf(d.Name) > -1);
         if (filters)
-            result = this.filterPokemon(result, filters)
+            result = this.filterForms(result, filters)
         if (orderBy !== null && orderDir !== null)
-            result = this.orderPokemons(result, orderBy, orderDir);
+            result = this.orderForms(result, orderBy, orderDir);
         return result;
     },
 
-    filterPokemon(pokemons: FormInfo[], filters: Filter[]): FormInfo[]{
+    filterForms(pokemons: Form[], filters: Filter[]): Form[]{
         filters.forEach(f => {
             if (f !== null && f.values.length > 0){
                 if (f.operator === "or"){
@@ -58,12 +58,12 @@ export const PokemonService = {
         return pokemons;
     },
 
-    idsFilter(ids: string[]): FormInfo[]{
-        let result = FORMS as FormInfo[];
+    idsFilter(ids: string[]): Form[]{
+        let result = FORMS as Form[];
         return result.filter(f => {return ids.includes(f.Id) != null})
     },
 
-    orderPokemons(input: FormInfo[], field: string, dir: string): FormInfo[]{
+    orderForms(input: Form[], field: string, dir: string): Form[]{
         switch (field){
             case "Id": return dir === "desc" ? 
                 input.sort((a, b) => (a.Pokemon.Id > b.Pokemon.Id) ? -1 : 1): 

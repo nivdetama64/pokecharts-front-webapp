@@ -3,8 +3,8 @@ import './MobileApp.css';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import PokemonList from '../../common-module/PokemonList/PokemonList';
-import {PokemonService} from '../../../Utils/PokemonService';
-import { FormInfo } from '../../../Models/Form';
+import {FormService} from '../../../Utils/FormService';
+import { Form } from '../../../Models/pokemons-models/FormFirst/Form';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -19,7 +19,7 @@ import Divider from '@mui/material/Divider';
 
 export interface MobileAppState {
   bottomNavigationValue: number;
-  currentPokemons: FormInfo[];
+  currentPokemons: Form[];
   currentForm: string;
   leftPanelOpen: boolean;
 }
@@ -32,7 +32,7 @@ export default class MobileApp extends React.Component<{}, MobileAppState> {
     super(props);
     this.state = {
       bottomNavigationValue: 2,
-      currentPokemons: PokemonService.getPokemons([], "Id", "Asc", []),
+      currentPokemons: FormService.getForms([], "Id", "Asc", []),
       currentForm: "normal",
       leftPanelOpen: false
     }
