@@ -13,7 +13,7 @@ export default class Header extends React.Component<{}, {}> {
 
   public render(): React.ReactElement<{}> {
     return (
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, position: 'fixed', top:0, width:'100%' }}>
         <AppBar position="static" className='appBar'>
           <Toolbar className='toolBar'>
             <IconButton

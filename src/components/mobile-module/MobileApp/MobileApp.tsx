@@ -97,7 +97,7 @@ export default class MobileApp extends React.Component<{}, MobileAppState> {
       <div className="App">
         <Header/>
         
-        <Button onClick={toggleDrawer(true)}>{anchor}</Button>
+        {/* <Button onClick={toggleDrawer(true)}>{anchor}</Button> */}
         <React.Fragment>
           <Drawer
             anchor={anchor}
