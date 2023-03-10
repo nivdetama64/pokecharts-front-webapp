@@ -1,0 +1,46 @@
+.main{
+    position: absolute;
+    margin: 10px;
+}
+
+.cell{
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid black;
+}
+
+.blackCell{
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+}
+
+.columnHeader {
+    height: 70px;
+    background-color: black;
+    color: white;
+}
+
+.rowHeader {
+    width: 70px;
+    background-color: black;
+    color: white;
+    text-align: right;
+}
+
+.headerText{
+    transform: rotate(270deg);
+    position: relative;
+    top: 25px;
+}
+
+.rowHeaderText{
+    position: relative;
+    top: -14px;
+    right: 4px;
+
+}

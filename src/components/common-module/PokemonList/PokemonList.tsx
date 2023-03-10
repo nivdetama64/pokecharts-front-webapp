@@ -12,6 +12,7 @@ export interface PokemonListProps {
 export default class PokemonList extends React.Component<PokemonListProps, {}> { 
 
   public render(): React.ReactElement<{}> {
+    console.log(this.props)
     return (
       <Grid container spacing={2} className='pokemonList' 
       sx={{ 

@@ -1,4 +1,4 @@
-export const ELEMENTS = [
+export const TYPES = [
   {
     "Name": "Bug",
     "Attack": [

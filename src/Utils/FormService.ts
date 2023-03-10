@@ -1,7 +1,10 @@
 import { CONSTS } from '../Data/consts';
 import { FORMS } from '../Data/forms'; 
+import { TYPES } from '../Data/types'; 
 import { Filter } from '../Models/filters-models/Filter';
 import { Form } from '../Models/pokemons-models/FormFirst/Form';
+import { FormsByTypes } from '../Models/types-models/FormsByTypes';
+import { Type } from '../Models/types-models/Type';
 
 export const FormService = {
 
@@ -70,5 +73,40 @@ export const FormService = {
                 input.sort((a, b) => (a.Pokemon.Id < b.Pokemon.Id) ? -1 : 1);
             default: return input;
         }
-    }
+    },
+
+    computeFormByTypes(): FormsByTypes[]{
+        let result: FormsByTypes[] = [];
+        const forms = FORMS as Form[];
+        const types = TYPES as Type[];
+        let tempTypes: string[] = [];
+        let tempForms: Form[] = [];
+        types.forEach(t => {
+            tempTypes = ["None", t.Name];
+            tempForms = forms.filter(f => {
+                return f.Types?.length === 1 && f.Types?.indexOf(t.Name) > -1;
+            });
+            result.push({
+                types: tempTypes,
+                forms: tempForms
+            });
+        });
+        types.forEach(t => {
+            types.forEach(tt => {
+                tempTypes = [t.Name, tt.Name];
+                tempForms = forms.filter(f => {
+                    return f.Types && f.Types.indexOf(t.Name) > -1 && f.Types?.indexOf(tt.Name) > -1;
+                });
+                let found:FormsByTypes[] = result.filter(f => {
+                    return f.types && f.types.indexOf(t.Name) > -1 && f.types?.indexOf(tt.Name) > -1;
+                });
+                if (found.length == 0)
+                    result.push({
+                        types: tempTypes,
+                        forms: tempForms
+                    })
+            });
+        });
+        return result;
+    },
 }

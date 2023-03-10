@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import MobileApp from './components/mobile-module/MobileApp/MobileApp';
+import TypesGrid from './components/types-module/TypesGrid';
 
 export default class Pokechart extends React.Component<{}, {}> {  
   
@@ -9,7 +10,8 @@ export default class Pokechart extends React.Component<{}, {}> {
     
     return (
       <div className="App">
-        <MobileApp></MobileApp>
+      <TypesGrid></TypesGrid>
+        {/* <MobileApp></MobileApp> */}
       </div>
     );
   }
