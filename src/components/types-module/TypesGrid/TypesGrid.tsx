@@ -1,9 +1,9 @@
 import React from 'react';
 import './TypesGrid.css';
-import { Type } from '../../Models/types-models/Type';
-import { FormsByTypes } from '../../Models/types-models/FormsByTypes';
-import { TypeService } from '../../Utils/TypeService';
-import { FormService } from '../../Utils/FormService';
+import { Type } from '../../../Models/types-models/Type';
+import { FormsByTypes } from '../../../Models/types-models/FormsByTypes';
+import { TypeService } from '../../../Utils/TypeService';
+import { FormService } from '../../../Utils/FormService';
 
 export interface TypesGridState {
   types: Type[];
@@ -68,14 +68,14 @@ export default class TypesGrid extends React.Component<{}, TypesGridState> {
         <div className='cell columnHeader' style={{'left': headerCalc + 'px'}}>
           <p className='headerText'>None</p>
         </div>
-        {s.types.map(t => <div className='cell columnHeader'
+        {s.types.map(t => <div className='cell columnHeader' key={t.Name}
               style={{'left': headerCalc + ((s.types.indexOf(t) + 1) * squareCalc) + 'px'}}
           ><p className='headerText'>{t.Name}</p></div>)
         }
         {/* ************************************ none line *******************************/}
         <div className='cell rowHeader' style={{'top':headerCalc + 'px'}}><p className='rowHeaderText'>None</p></div>
         <div className='blackCell' style={{'top':headerCalc + 'px','left': headerCalc+'px'}}>0</div>
-        {s.types.map(t => <div className='cell' style={{
+        {s.types.map(t => <div className='cell' key={t.Name} style={{ 
             'left': headerCalc + ((s.types.indexOf(t) + 1) * squareCalc) + 'px',
             'top': headerCalc + 'px',
             'backgroundColor': this.getBGColor(this.countFormsForTypes("None", t.Name))}}>
@@ -84,7 +84,7 @@ export default class TypesGrid extends React.Component<{}, TypesGridState> {
         {/* ************************************ lines *******************************/}
         {
             s.types.map(t => 
-              <div>
+              <div key={t.Name}>
                 {/* ************************************ first *******************************/}
                 <div className='cell rowHeader' style={{'top': headerCalc + ((s.types.indexOf(t) + 1) * squareCalc) + 'px'}}>
                   <p className='rowHeaderText'>{t.Name} </p>
@@ -99,7 +99,8 @@ export default class TypesGrid extends React.Component<{}, TypesGridState> {
                 {/* ************************************ for others *******************************/}
                 {
                   s.types.map(tt => 
-                    <div className={(t.Name === tt.Name ? 'blackCell': 'cell')} style={{
+                    <div className={(t.Name === tt.Name ? 'blackCell': 'cell')} 
+                        key={t.Name + tt.Name} style={{
                         'left': headerCalc + ((s.types.indexOf(t) + 1) * squareCalc) + 'px',
                         'top': headerCalc + ((s.types.indexOf(tt) + 1) * squareCalc) + 'px',
                         'backgroundColor': (t.Name === tt.Name ? 'black': this.getBGColor(this.countFormsForTypes(t.Name,tt.Name)))

@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import React from 'react';
-import TypesGrid from '../TypesGrid';
+import TypesGrid from '../TypesGrid/TypesGrid';
 import './TypesApp.css';
 
 export default class TypesApp extends React.Component<{}, {}> {
