@@ -1,7 +1,6 @@
 import React from 'react';
 import './MobileApp.css';
 import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import PokemonList from '../../common-module/PokemonList/PokemonList';
 import {FormService} from '../../../Utils/FormService';
 import { Form } from '../../../Models/pokemons-models/FormFirst/Form';
@@ -95,8 +94,6 @@ export default class MobileApp extends React.Component<{}, MobileAppState> {
     const anchor = "top"
     return (
       <div className="App">
-        <Header/>
-        
         {/* <Button onClick={toggleDrawer(true)}>{anchor}</Button> */}
         <React.Fragment>
           <Drawer
